@@ -198,8 +198,6 @@ class Weekly:
                                                   justify=CENTER, font=("Georgia", 18), state="normal")
         self.classes_to_attend_display.grid(column=11, row=12)
 
-        # ttk.Label(routine_frame2, text="Attendance \n Percent: ", font=("Georgia", 18)).grid()
-
     def create_time(self):
         ttk.Label(self.win_root, text="               ", font="Georgia").grid(column=2, row=2, sticky=E)
 
@@ -370,36 +368,6 @@ class Weekly:
 
         self.month6_selected.grid(column=1, row=8, sticky=W)
         self.month6_selected.current(0)
-
-    def check_date(self):
-        days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        day_list = [self.day_1.get(), self.day_2.get(), self.day_3.get(), self.day_4.get(), self.day_5.get(),
-                    self.day_6.get()]
-        month_list = [self.month_1.get(), self.month_2.get(), self.month_3.get(), self.month_4.get(),
-                      self.month_5.get(), self.month_6.get()]
-
-        print(day_list)
-        print(month_list)
-
-        current_year = self.year.get()
-        print(current_year)
-        if current_year % 4 == 0:
-            for i in range(6):
-                if day_list[i] == 31:
-                    if month_list[i] == 1 or 3 or 5 or 7 or 8 or 10 or 12:
-                        print(day_list[i])
-                        print(month_list[i])
-                        print("accepted")
-
-
-                else:
-                    print(day_list[i])
-                    print(month_list[i])
-                    print("not accepted")
-
-            # days[1] += 1
-            # print(days)
 
     def create_routine(self):
         self.sub_entry_11 = tk.Entry(self.win_root, width=12, textvariable=self.sub_name_11, justify=CENTER,
@@ -666,8 +634,6 @@ class Weekly:
 
     def create_functions_button(self):
 
-        # new_frame = tk.Frame(self.win_root, height=500, bd=2, relief=SUNKEN)
-        # new_frame.grid(column=8, row=2)
         attendance_percent = tk.Button(self.win_root, text="Attendance Percent", font="Georgia",
                                        command=self.attendance_percent_button_clicked)
         attendance_percent.grid(column=3, row=12)
@@ -677,19 +643,13 @@ class Weekly:
         class_to_attend.grid(column=9, row=12)
 
         select_button = tk.Button(self.win_root, text="Select", font="Georgia", command=self.select_classes)
-        select_button.grid(column=12, row=3, padx=90)
+        select_button.grid(column=6, row=12)
 
-        check_time_button = tk.Button(self.win_root, text="Check", font="Georgia", command=self.check_date)
-        check_time_button.grid(column=12, row=5, padx=90)
-
-        check_time_button = tk.Button(self.win_root, text="Refresh", font="Georgia", command=self.refresh_clicked)
-        check_time_button.grid(column=12, row=6, padx=90)
+        refresh_button = tk.Button(self.win_root, text="Refresh", font="Georgia", command=self.refresh_clicked)
+        refresh_button.grid(column=12, row=3, padx=90)
 
         ok_button = tk.Button(self.win_root, text="ok", font="Georgia", command=self.ok_clicked)
         ok_button.grid(column=12, row=12)
-
-        save_button = tk.Button(self.win_root, text="save", font="Georgia", command=self.save_button_clicked)
-        save_button.grid(column=12, row=13, pady=20)
 
     def check_time(self):
         pattern = re.compile(r'[0-1][0-9]:[0-5][0-9]\s-\s[0-1][0-9]:[0-5][0-9]')
@@ -889,17 +849,9 @@ class Weekly:
         else:
             msg.showinfo("Consecutive calculations", "Click the refresh button to perform consecutive calculations!")
 
-    def save_button_clicked(self):
-        list23 = []
-
-        months_31 = ["January", "March", "May", "July", "August", "October", "December"]
-        day_list = [self.day_1, self.day_2, self.day_3, self.day_4, self.day_5, self.day_6]
-        month_list = [self.month_1, self.month_2, self.month_3, self.month_4, self.month_5, self.month_6]
-
     def refresh_clicked(self):
 
         if not self.attendance_percent_clicked or not self.classes_to_attend_clicked:
-
             self.attendance_percent_clicked = False
             self.attendance_percent_calculated = False
             self.select_class_executed = False
@@ -942,4 +894,3 @@ class Weekly:
 if __name__ == '__main__':
     obj_weekly = Weekly()
     obj_weekly.win_root.mainloop()
-
