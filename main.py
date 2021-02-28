@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import Menu, CENTER, SUNKEN, RIGHT, RAISED, BOTTOM, W, E, NORMAL, FLAT
+from tkinter import CENTER, SUNKEN, W, E, FLAT
 from tkinter import messagebox as msg
 import re
 import math
@@ -16,7 +16,6 @@ class Weekly:
     select_class_executed = False
     attendance_percent_calculated = False
     ok_button_clicked = False
-    refresh_button_clicked = False  # not used
     total_subjects = 0
     checkButton_enabled_count = 0
     count_for_correct_timing = 0
@@ -35,6 +34,9 @@ class Weekly:
     def __init__(self):
         self.win_root = tk.Tk()
         self.win_root.title("Attendance Manager")
+
+        # variable declaration
+        # follows row, column naming convention
 
         self.timing_1 = tk.StringVar()
         self.timing_2 = tk.StringVar()
@@ -135,7 +137,7 @@ class Weekly:
         self.month_6 = tk.StringVar()
 
         self.percent = tk.DoubleVar()
-        self.attend_class = tk.DoubleVar()
+        self.attend_class = tk.IntVar()
 
         self.create_labels()
         self.create_time()
@@ -178,6 +180,9 @@ class Weekly:
                                        self.sub_name_51, self.sub_name_52, self.sub_name_53, self.sub_name_54,
                                        self.sub_name_55, self.sub_name_61, self.sub_name_62, self.sub_name_63,
                                        self.sub_name_64, self.sub_name_65]
+
+        self.date_list = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+                          26, 27, 28, 29, 30, 31)
 
     def create_labels(self):
         ttk.Label(self.win_root, text=" Timings:\n Date ", font=("Georgia", 18)).grid(column=0, row=2)
@@ -251,6 +256,12 @@ class Weekly:
 
     def create_date(self):
 
+        date_list = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+                     27, 28, 29, 30, 31)
+
+        month_list = ("January", "February", "March", "April", "May", "June", "July", "August", "September",
+                      "October", "November", "December")
+
         date_frame1 = tk.Frame(self.win_root, height=600, bd=2, highlightcolor="red", relief=SUNKEN)
         date_frame1.grid(column=0, row=3, padx=10)
 
@@ -281,90 +292,78 @@ class Weekly:
         # ---------
 
         self.day1_selected = ttk.Combobox(date_frame1, width=2, textvariable=self.day_1, font="Georgia")
-        self.day1_selected['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                        23, 24, 25, 26, 27, 28, 29, 30, 31)
+        self.day1_selected['values'] = date_list
 
         self.day1_selected.grid(column=0, row=3, sticky=W)
         self.day1_selected.current(0)
 
         self.month1_selected = ttk.Combobox(date_frame1, width=8, textvariable=self.month_1, font="Georgia")
-        self.month1_selected['values'] = ("January", "February", "March", "April", "May", "June", "July",
-                                          "August", "September", "October", "November", "December")
+        self.month1_selected['values'] = month_list
 
         self.month1_selected.grid(column=1, row=3, sticky=W)
         self.month1_selected.current(0)
 
         # ---------
         self.day2_selected = ttk.Combobox(date_frame2, width=2, textvariable=self.day_2, font="Georgia")
-        self.day2_selected['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                        23, 24, 25, 26, 27, 28, 29, 30, 31)
+        self.day2_selected['values'] = date_list
 
         self.day2_selected.grid(column=0, row=4, sticky=W)
         self.day2_selected.current(0)
 
         self.month2_selected = ttk.Combobox(date_frame2, width=8, textvariable=self.month_2, font="Georgia")
-        self.month2_selected['values'] = ("January", "February", "March", "April", "May", "June", "July",
-                                          "August", "September", "October", "November", "December")
+        self.month2_selected['values'] = month_list
 
         self.month2_selected.grid(column=1, row=4, sticky=W)
         self.month2_selected.current(0)
 
         # ---------
         self.day3_selected = ttk.Combobox(date_frame3, width=2, textvariable=self.day_3, font="Georgia")
-        self.day3_selected['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                        23, 24, 25, 26, 27, 28, 29, 30, 31)
+        self.day3_selected['values'] = date_list
 
         self.day3_selected.grid(column=0, row=5, sticky=W)
         self.day3_selected.current(0)
 
         self.month3_selected = ttk.Combobox(date_frame3, width=8, textvariable=self.month_3, font="Georgia")
-        self.month3_selected['values'] = ("January", "February", "March", "April", "May", "June", "July",
-                                          "August", "September", "October", "November", "December")
+        self.month3_selected['values'] = month_list
 
         self.month3_selected.grid(column=1, row=5, sticky=W)
         self.month3_selected.current(0)
 
         # ---------
         self.day4_selected = ttk.Combobox(date_frame4, width=2, textvariable=self.day_4, font="Georgia")
-        self.day4_selected['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                        23, 24, 25, 26, 27, 28, 29, 30, 31)
+        self.day4_selected['values'] = date_list
 
         self.day4_selected.grid(column=0, row=6, sticky=W)
         self.day4_selected.current(0)
 
         self.month4_selected = ttk.Combobox(date_frame4, width=8, textvariable=self.month_4, font="Georgia")
-        self.month4_selected['values'] = ("January", "February", "March", "April", "May", "June", "July",
-                                          "August", "September", "October", "November", "December")
+        self.month4_selected['values'] = month_list
 
         self.month4_selected.grid(column=1, row=6, sticky=W)
         self.month4_selected.current(0)
 
         # ---------
         self.day5_selected = ttk.Combobox(date_frame5, width=2, textvariable=self.day_5, font="Georgia")
-        self.day5_selected['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                        23, 24, 25, 26, 27, 28, 29, 30, 31)
+        self.day5_selected['values'] = date_list
 
         self.day5_selected.grid(column=0, row=7, sticky=W)
         self.day5_selected.current(0)
 
         self.month5_selected = ttk.Combobox(date_frame5, width=8, textvariable=self.month_5, font="Georgia")
-        self.month5_selected['values'] = ("January", "February", "March", "April", "May", "June", "July",
-                                          "August", "September", "October", "November", "December")
+        self.month5_selected['values'] = month_list
 
         self.month5_selected.grid(column=1, row=7, sticky=W)
         self.month5_selected.current(0)
 
         # ---------
         self.day6_selected = ttk.Combobox(date_frame6, width=2, textvariable=self.day_6, font="Georgia")
-        self.day6_selected['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                        23, 24, 25, 26, 27, 28, 29, 30, 31)
+        self.day6_selected['values'] = date_list
 
         self.day6_selected.grid(column=0, row=8, sticky=W)
         self.day6_selected.current(0)
 
         self.month6_selected = ttk.Combobox(date_frame6, width=8, textvariable=self.month_6, font="Georgia")
-        self.month6_selected['values'] = ("January", "February", "March", "April", "May", "June", "July",
-                                          "August", "September", "October", "November", "December")
+        self.month6_selected['values'] = month_list
 
         self.month6_selected.grid(column=1, row=8, sticky=W)
         self.month6_selected.current(0)
@@ -653,7 +652,6 @@ class Weekly:
 
     def check_time(self):
         pattern = re.compile(r'[0-1][0-9]:[0-5][0-9]\s-\s[0-1][0-9]:[0-5][0-9]')
-
         timing_variables_list = [self.timing_1, self.timing_2, self.timing_3, self.timing_4, self.timing_5]
 
         for entry in timing_variables_list:
@@ -775,7 +773,6 @@ class Weekly:
             msg.showinfo("Attendance Manager", "Edit the routine to add and select the classes attended!")
 
     def classes_to_attend(self):
-
         if not self.ok_button_clicked:
             self.classes_to_attend_clicked = True
 
@@ -811,15 +808,12 @@ class Weekly:
             msg.showinfo("Attendance Manager", "Click the refresh button to perform consecutive calculations!")
 
     def ok_clicked(self):
-
         if not self.ok_button_clicked:
             if not self.classes_to_attend_clicked:
                 msg.showinfo("Attendance Manager", "Click on class to attend button, and enter the required attendance "
                                                    "percent!")
-
             else:
                 value = self.attend_class.get()
-
                 if value <= 0.0 or value >= 100:
                     msg.showinfo("Illegal input", "Enter a reasonable attendance percentage!")
 
