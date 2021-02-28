@@ -41,3 +41,4 @@ each class you have attended and then click on **select** button.
 
 6. The required number of classes will be displayed and a random set of 
 classes will be accordingly highlighted.
+<img src = images/image_8.png width="900">
