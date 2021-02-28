@@ -21,6 +21,11 @@ How to use:
 1. Run the project (*main.py* file) and enter your class routine 
 details like timings, subjects and the days for which you would 
 like to maintain and track your attendance.
+
+
+![First image]
+(https://github.com/swarna1001/Attendance-Manager/blob/master/images/image_1.png)
+
 2. Based on your requirements, click on the **Attendance Percent** 
 or **Classes to attend** button.
 3. If your selection is **Attendance Percent**,
