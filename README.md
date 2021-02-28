@@ -18,14 +18,26 @@ main  the required percentage.
 
 
 How to use:
-1. Run the project (*main.py* file) and enter your class routine 
-details like timings, subjects and the days for which you would 
-like to maintain and track your attendance.
-
+1. Run the project (*main.py* file) and enter your class routine details like 
+timings, subjects and the days for which you would like to maintain and track your 
+attendance.
 <img src = images/image_1.png width="900">
-
 
 2. Based on your requirements, click on the **Attendance Percent** 
 or **Classes to attend** button.
-3. If your selection is **Attendance Percent**,
- 
+3. If your selection is **Attendance Percent**, check the adjoining checkbox to 
+each class you have attended and then click on **select** button.
+<img src = images/image_2.png width="900">
+<img src = images/image_3.png width="900">
+<img src = images/image_4.png width="900">
+
+4. To calculate the number of classes needed to attend, you can click on the
+**Refresh** button, and then click on **Classes to attend** button.
+<img src = images/image_5.png width="900">
+<img src = images/image_6.png width="900">
+
+5. Enter the required attendance percent and click on **ok** button.
+<img src = images/image_7.png width="900">
+
+6. The required number of classes will be displayed and a random set of 
+classes will be accordingly highlighted.
