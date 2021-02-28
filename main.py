@@ -137,7 +137,7 @@ class Weekly:
         self.month_6 = tk.StringVar()
 
         self.percent = tk.DoubleVar()
-        self.attend_class = tk.IntVar()
+        self.attend_class = tk.DoubleVar()
 
         self.create_labels()
         self.create_time()
@@ -707,7 +707,7 @@ class Weekly:
                     pos = self.subject_variables_list.index(
                         subject)  # if entry box is empty, the index is added to the list
                     self.disable_checkButton_list.append(pos)
-            print(self.total_subjects)  # total subjects in the routine
+            # print(self.total_subjects)  # total subjects in the routine
 
             if self.total_subjects == 0:
                 self.total_subjects_is_zero = True
@@ -752,7 +752,7 @@ class Weekly:
                     for pos in self.valid_entry_chkBox_list:
                         self.check_button_list[pos].configure(state="disabled")
 
-                    print("selected", self.checkButton_enabled_count)
+                    # print("selected", self.checkButton_enabled_count)
 
                     try:
                         self.percent_attendance = (self.checkButton_enabled_count / self.total_subjects) * 100
@@ -773,6 +773,7 @@ class Weekly:
             msg.showinfo("Attendance Manager", "Edit the routine to add and select the classes attended!")
 
     def classes_to_attend(self):
+
         if not self.ok_button_clicked:
             self.classes_to_attend_clicked = True
 
@@ -808,12 +809,15 @@ class Weekly:
             msg.showinfo("Attendance Manager", "Click the refresh button to perform consecutive calculations!")
 
     def ok_clicked(self):
+
         if not self.ok_button_clicked:
             if not self.classes_to_attend_clicked:
                 msg.showinfo("Attendance Manager", "Click on class to attend button, and enter the required attendance "
                                                    "percent!")
+
             else:
                 value = self.attend_class.get()
+
                 if value <= 0.0 or value >= 100:
                     msg.showinfo("Illegal input", "Enter a reasonable attendance percentage!")
 
@@ -867,7 +871,7 @@ class Weekly:
 
             self.percent.set(0)
 
-        print("current value", self.classes_to_attend, "\n")
+        # print("current value", self.classes_to_attend, "\n")
 
         if not self.classes_to_attend_clicked:
             for entry in self.entry_list:
