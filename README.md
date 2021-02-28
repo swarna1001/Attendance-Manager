@@ -22,7 +22,7 @@ How to use:
 details like timings, subjects and the days for which you would 
 like to maintain and track your attendance.
 
-<img src = images/image_1.png width="300">
+<img src = images/image_1.png width="900">
 
 
 2. Based on your requirements, click on the **Attendance Percent** 
