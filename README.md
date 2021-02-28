@@ -22,9 +22,8 @@ How to use:
 details like timings, subjects and the days for which you would 
 like to maintain and track your attendance.
 
+<img src = images/image_1.png width="300">
 
-![First image]
-(https://github.com/swarna1001/Attendance-Manager/blob/master/images/image_1.png)
 
 2. Based on your requirements, click on the **Attendance Percent** 
 or **Classes to attend** button.
