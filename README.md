@@ -14,7 +14,7 @@ You can calculate:
 1. Your attendance based on the number of classes you have attended
  out of the total classes in your routine 
 2. Or the  total number of classes you need to attend in order to 
-main  the required percentage.
+maintain the required percentage.
 
 
 **How to use:**
